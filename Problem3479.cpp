@@ -1,67 +1,43 @@
 #include <vector>
 using std::vector;
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> segTree;
-    void buildSegTree(vector<int> &baskets, int i, int l, int r)
-    {
-        if (l == r)
-        {
-            segTree[i] = baskets[l];
-            return;
-        }
-
-        int mid = l + (r - l) / 2;
-
-        buildSegTree(baskets, 2 * i + 1, l, mid);
-        buildSegTree(baskets, 2 * i + 2, mid + 1, r);
-
-        segTree[i] = std::max(segTree[2 * i + 1], segTree[2 * i + 2]);
-    }
-    bool querySegTree(int i, int l, int r, int val)
-    {
-        if (segTree[i] < val)
-        {
-            return false;
-        }
-        if (l == r)
-        {
-            segTree[i] = -1;
-            return true;
-        }
-
-        int mid = l + (r - l) / 2;
-        bool placed = false;
-
-        if (segTree[2 * i + 1] >= val)
-        {
-            placed = querySegTree(2 * i + 1, l, mid, val);
-        }
-        else
-        {
-            placed = querySegTree(2 * i + 2, mid + 1, r, val);
-        }
-
-        segTree[i] = std::max(segTree[2 * i + 1], segTree[2 * i + 2]);
-        return placed;
-    }
-    int numOfUnplacedFruits(vector<int> &fruits, vector<int> &baskets)
-    {
-        int n = fruits.size();
-
-        segTree.resize(4 * n, -1);
-        buildSegTree(baskets, 0, 0, n - 1);
-
+    int numOfUnplacedFruits(vector<int>& fruits, vector<int>& baskets) {
+        int n = size(baskets);
+        vector<int> bit(n * 4, -1);
+        build(bit, baskets, 0, 0, n - 1);
         int ans = 0;
-        for (int &i : fruits)
-        {
-            if (querySegTree(0, 0, n - 1, i) == false)
-            {
-                ans++;
-            }
+        for (int i : fruits) {
+            if (!query(bit, 0, 0, n - 1, i)) ans++;
         }
         return ans;
+    }
+private:
+    void build(vector<int>& bit, vector<int>& baskets, int i, int l, int r) {
+        if (l == r) {
+            bit[i] = baskets[l];
+            return;
+        }
+        int mid = l + (r - l) / 2;
+        build(bit, baskets, i * 2 + 1, l, mid);
+        build(bit, baskets, i * 2 + 2, mid + 1, r);
+        bit[i] = std::max(bit[i * 2 + 1], bit[i * 2 + 2]);
+    }
+    bool query(vector<int>& bit,int i, int l, int r, int k) {
+        if (bit[i] < k) return false;
+        if (l == r) {
+            bit[i] = -1;
+            return true;
+        }
+        int m = l + (r - l) / 2;
+        if (bit[i * 2 + 1] >= k) {
+            query(bit, i * 2 + 1, l, m, k);
+            bit[i] = std::max(bit[i * 2 + 1], bit[i * 2 + 2]);
+        } else {
+            query(bit, i * 2 + 2, m + 1, r, k);
+            bit[i] = std::max(bit[i * 2 + 1], bit[i * 2 + 2]);
+        }
+        return true;
     }
 };
