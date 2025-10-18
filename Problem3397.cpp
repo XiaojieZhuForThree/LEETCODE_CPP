@@ -5,20 +5,19 @@ using std::vector;
 class Solution {
 public:
     int maxDistinctElements(vector<int>& nums, int k) {
-        int ans = 0;
         sort(begin(nums), end(nums));
-        for(int i = 0, last = INT_MIN; i < size(nums); i++){
-            int mn = nums[i] - k;
-            int mx = nums[i] + k;
-            if(last < mn) {
-                last = mn;
+        int ans = 0, cur = INT_MIN;
+        for (int i : nums) {
+            int a = i - k, b = i + k;
+            if (cur < a) {
                 ans++;
-            }
-            else if (last < mx) {
-                last = last + 1;
+                cur = a;
+            } else if (cur < b) {
+                cur++;
                 ans++;
             }
         }
-        return ans;        
+        return ans;
+
     }
 };
