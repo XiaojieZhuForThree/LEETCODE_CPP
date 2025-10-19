@@ -18,9 +18,9 @@ public:
             ans = min(ans, cur);
             s.insert(cur);
             string nxt = cur;
-            for(int i=1; i<n; i+=2) nxt[i]= '0' + (nxt[i] - '0' + a) % 10;
+            for(int i = 1; i < n; i += 2) nxt[i] = '0' + (nxt[i] - '0' + a) % 10;
             q.push_front(nxt);
-            q.push_front(cur.substr(n-b,b)+cur.substr(0,n-b));
+            q.push_front(cur.substr(n - b, b) + cur.substr(0, n - b));
         }
         return ans;
     }
