@@ -5,12 +5,9 @@ using std::vector;
 class Solution {
 public:
     int minOperations(vector<int>& nums) {
-        int n = size(nums);
-        
-        int ones = 0;
+        int n = size(nums), ones = 0;
         for (int x : nums) if (x == 1) ones++;
         if (ones > 0) return n - ones;
-
         int g = 0;
         for (int x : nums) g = std::gcd(g, x);
         if (g > 1) return -1;
