@@ -14,7 +14,6 @@ public:
                     dp[i][j][cur % k] = 1;
                     continue;
                 }
-                vector<int> nxt(k, 0);
                 for (int p = 0; p < k; p++) {
                     int t = (p + cur) % k;
                     dp[i][j][t] = (dp[i - 1][j][p] + dp[i][j - 1][p]) % MOD;
