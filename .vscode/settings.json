@@ -51,6 +51,7 @@
         "__tree": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }

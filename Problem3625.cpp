@@ -1,4 +1,4 @@
-#include <bits>
+#include <bits/stdc++.h>
 #include <ranges>
 #include <tuple>
 using namespace std;
