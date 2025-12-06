@@ -23,6 +23,6 @@ public:
             dp[j + 1] = acc;
             acc = (acc + dp[j + 1]) % mod;
         }
-        return dp[n];        
+        return dp[n];
     }
 };
