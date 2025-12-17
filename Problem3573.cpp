@@ -27,6 +27,6 @@ public:
 
             swap(dp_prev, dp_cur);
         }
-        return dp_prev[n - 1];        
+        return dp_prev[n - 1];
     }
 };
