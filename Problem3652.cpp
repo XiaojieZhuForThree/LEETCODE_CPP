@@ -1,3 +1,7 @@
+#include <vector>
+#include <numeric>
+using std::vector;
+
 const int N=1e5+1;
 long long sum[N];
 class Solution {
@@ -9,12 +13,12 @@ public:
             sum[i+1]=sum[i]+1LL*strategy[i]*prices[i];
         }
 
-        long long modify=reduce(prices.begin()+k2, prices.begin()+k, 0LL);
-        long long profit=max(sum[n], modify+sum[n]-sum[k]);
+        long long modify=std::reduce(prices.begin()+k2, prices.begin()+k, 0LL);
+        long long profit=std::max(sum[n], modify+sum[n]-sum[k]);
 
         for(int i=1; i+k<=n; i++){ 
             modify+=prices[i+k-1]-prices[i+k2-1];
-            profit=max(profit, modify+sum[n]-sum[i+k]+sum[i]);
+            profit=std::max(profit, modify+sum[n]-sum[i+k]+sum[i]);
         }
         return profit;
     }
