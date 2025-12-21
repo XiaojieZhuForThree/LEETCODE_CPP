@@ -25,9 +25,7 @@ private:
             if (prev[i] + strs[i][j] < prev[i - 1] + strs[i - 1][j]) {
                 ans = 2;
                 break;
-            } else if (prev[i] + strs[i][j] == prev[i - 1] + strs[i - 1][j]) {
-                ans = 1;
-            }
+            } else if (prev[i] + strs[i][j] == prev[i - 1] + strs[i - 1][j]) ans = 1;
         }
         return ans;
     }
