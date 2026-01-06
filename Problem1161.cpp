@@ -1,10 +1,11 @@
 #include "TreeNode.h"
 #include <deque>
+#include <climits>
 
 class Solution {
 public:
     int maxLevelSum(TreeNode* root) {
-        int ans = 1, cur = 0, sum = root->val;
+        int ans = 0, cur = 0, sum = INT_MIN;
         std::deque<TreeNode*> q;
         q.push_back(root);
         while (!q.empty()) {
