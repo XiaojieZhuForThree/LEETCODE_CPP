@@ -19,7 +19,6 @@ public:
         sort(vals.rbegin(), vals.rend());
         vector available(k, vals);
 
-        
         using tr = tuple<int, int, int, int>;
         priority_queue<tr, vector<tr>, std::greater<>> pq;
         vector shortest(n, vector(m, vector<int>(k + 1, INT_MAX/2)));
