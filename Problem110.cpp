@@ -1,4 +1,5 @@
 #include "TreeNode.h"
+#include <vector>
 using std::pair;
 
 class Solution {
