@@ -11,8 +11,7 @@ public:
         for (int i = 0; i < n; i++)
         {
             int count = 0;
-            for (int j = n; --j >= 0 && !grid[i][j];)
-                count++;
+            for (int j = n; --j >= 0 && !grid[i][j];) count++;
             t[i] = count;
         }
         int ans = 0;
