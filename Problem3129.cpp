@@ -23,6 +23,5 @@ public:
             }
         }
         return (dp0[zero][one] + dp1[zero][one]) % mod;
-        
     }
 };
