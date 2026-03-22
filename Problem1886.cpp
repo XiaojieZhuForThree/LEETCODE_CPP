@@ -22,18 +22,10 @@ private:
         return true;
     }
     vector<vector<int>> rot(vector<vector<int>>& m) {
-        int n = size(m), k = n / 2;
+        int n = size(m);
         vector<vector<int>> ans(n, vector<int>(n, 0));
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) ans[i][j] = m[i][j];
-        }
-        for (int i = 0; i < k; i++) {
-            for (int j = 0; i + j < n - i; j++) {
-                ans[i][i + j] = m[n - 1 - i - j][i];
-                ans[i + j][n - 1 - i] = m[i][i + j];
-                ans[n - 1 - i][n - 1 - i - j] = m[i + j][n - 1 - i];
-                ans[n - 1 - i - j][i] = m[n - 1 - i][n - 1 - i - j];
-            }
+            for (int j = 0; j < n; j++) ans[i][j] = m[n - 1 - j][i];
         }
         return ans;
     }
