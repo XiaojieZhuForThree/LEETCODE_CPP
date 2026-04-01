@@ -1,8 +1,10 @@
 #include <vector>
 #include <deque>
 #include <algorithm>
+#include <string>
 using std::vector;
 using std::deque;
+using std::string;
 
 struct State {
     int i;
