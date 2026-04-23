@@ -17,8 +17,7 @@ public:
             auto &pos = it.second;
 
             long long sum = 0;
-            for (int x : pos)
-                sum += x;
+            for (int x : pos) sum += x;
 
             long long leftSum = 0;
             int m = pos.size();
