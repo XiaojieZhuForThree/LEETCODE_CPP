@@ -16,52 +16,39 @@ public:
         {
             if (isvisited[i - 1][j] == 0)
             {
-                if (dfs(i - 1, j, i, j, grid, isvisited, r, c))
-                    return 1;
+                if (dfs(i - 1, j, i, j, grid, isvisited, r, c)) return 1;
+                    
             }
-            else if (i - 1 != pi || j != pj)
-            {
-                return 1;
-            }
+            else if (i - 1 != pi || j != pj) return 1;
         }
 
         if ((i + 1) < r && grid[i + 1][j] == grid[i][j])
         {
             if (isvisited[i + 1][j] == 0)
             {
-                if (dfs(i + 1, j, i, j, grid, isvisited, r, c))
-                    return 1;
+                if (dfs(i + 1, j, i, j, grid, isvisited, r, c)) return 1;
             }
-            else if (i + 1 != pi || j != pj)
-            {
-                return 1;
-            }
+            else if (i + 1 != pi || j != pj) return 1;
         }
 
         if ((j - 1) >= 0 && grid[i][j - 1] == grid[i][j])
         {
             if (isvisited[i][j - 1] == 0)
             {
-                if (dfs(i, j - 1, i, j, grid, isvisited, r, c))
-                    return 1;
+                if (dfs(i, j - 1, i, j, grid, isvisited, r, c)) return 1;
+                    
             }
-            else if (i != pi || j - 1 != pj)
-            {
-                return 1;
-            }
+            else if (i != pi || j - 1 != pj) return 1;
         }
 
         if ((j + 1) < c && grid[i][j + 1] == grid[i][j])
         {
             if (isvisited[i][j + 1] == 0)
             {
-                if (dfs(i, j + 1, i, j, grid, isvisited, r, c))
-                    return 1;
+                if (dfs(i, j + 1, i, j, grid, isvisited, r, c)) return 1;
+                    
             }
-            else if (i != pi || j + 1 != pj)
-            {
-                return 1;
-            }
+            else if (i != pi || j + 1 != pj) return 1;
         }
 
         return 0;
@@ -80,8 +67,7 @@ public:
                 if (isvisited[i][j] == 0)
                 {
                     int temp = dfs(i, j, -1, -1, grid, isvisited, rows, cols);
-                    if (temp == 1)
-                        return true;
+                    if (temp == 1) return true;
                 }
             }
         }
