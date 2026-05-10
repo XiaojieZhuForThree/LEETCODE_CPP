@@ -2,10 +2,12 @@
 #include <set>
 #include <map>
 #include <algorithm>
+#include "operations.h"
 using std::vector;
 using std::set;
 using std::map;
 using std::max;
+using std::plus;
 
 template <class T, T default_value = T(), auto merge_node = plus<>()>
 struct SegmentTree {
