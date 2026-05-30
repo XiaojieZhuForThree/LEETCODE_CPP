@@ -1,7 +1,14 @@
 #include <iterator>
 #include <vector>
+#include <set>
+#include <map>
+#include <algorithm>
 using std::vector;
+using std::set;
+using std::map;
 using std::prev;
+using std::advance;
+using std::min;
 
 class Solution {
 
@@ -22,13 +29,6 @@ class Solution {
     bool findSpace(int maxi_dist, int block_size){
         auto it = spaces.lower_bound(block_size);
         while(it != spaces.end()){
-            //for(int start_pos: it->second){
-            //    if(start_pos+block_size <= maxi_dist){
-            //        return true;
-            //    }
-            // }
-            // The start positions were sorted in order.
-            // Thus we only need to check the first one.
             set<int> & start_positions = it->second;
             int first_pos = *start_positions.begin();
             if(first_pos + block_size <= maxi_dist){
