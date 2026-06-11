@@ -2,8 +2,8 @@
 #include <vector>
 #include <algorithm>
 using std::map;
-using std::max;
 using std::vector;
+using std::max;
 
 class Solution {
 public:
