@@ -1,16 +1,26 @@
 #include <vector>
-#include <algorithm>
 using std::vector;
-using std::min;
-using std::max;
 
 class Solution {
 public:
     bool stoneGameIX(vector<int>& stones) {
-        int cnt[3] = {0};
-        for(int i = 0, n = size(stones); i < n; ++i) cnt[stones[i] % 3]++;
-        int zero = cnt[0], one = cnt[1], two = cnt[2];
-        if (min(one , two) == 0) return max(one , two) > 2 && (zero & 1);
-        return zero % 2 == 0 || abs(two - one) > 2;
+        vector<int> v(3, 0);
+        for (int i : stones) v[i % 3]++;
+        if (v[1] == 0 || v[2] == 0) {
+            if (abs(v[1] - v[2]) <= 2) return false;
+            return v[0] % 2 == 1;
+        }
+        return helper(v[0], v[1], v[2]) || helper(v[0], v[2], v[1]);
+    }
+private:
+    bool helper(int a, int b, int c) {
+        int p = std::min(b - 1, c);
+        b -= (1 + p);
+        c -= p;
+        if (b == 0 && c == 0) return false;
+        if (b == 0) return a % 2 == 0;
+        if (b <= 1) return false;
+        return a % 2 == 1;
     }
 };
+
