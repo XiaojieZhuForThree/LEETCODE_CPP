@@ -22,7 +22,6 @@ public:
     int n, k;
     SegmentTree(vector<int> &nums, int &k): k(k){
         n = nums.size();
-        // fill(tree.begin(), tree.begin() + 4 * n + 1, State());
         build(0, 0, n - 1, nums);
     }
     void helper(State& left, State& right, State &res){
