@@ -13,9 +13,8 @@ public:
             int j = nums[i], cur = j;
             while (j != i) {
                 checked[j] = 1;
-                int nxt = nums[j];
-                cur &= nxt;
-                j = nxt;
+                cur &= nums[j];
+                j = nums[j];
             }
             if (ans != -1) ans &= cur;
             else ans = cur;
