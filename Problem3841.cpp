@@ -4,6 +4,8 @@
 using std::vector;
 using std::pair;
 using std::string;
+using std::swap;
+
 
 struct FenwickXor {
     int n;
