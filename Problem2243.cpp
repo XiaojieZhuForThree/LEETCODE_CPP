@@ -1,5 +1,7 @@
 #include <string>
+#include <algorithm>
 using std::string;
+using std::min;
 using std::to_string;
 
 class Solution {
