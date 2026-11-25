@@ -69,10 +69,6 @@ private:
 
 public:
     int smallestUniqueSubarray(vector<int>& nums) {
-        // Optimize standard I/O operations for competitive programming competitive constraints
-        ios_base::sync_with_stdio(false);
-        cin.tie(NULL);
-
         int n = nums.size();
         int low = 1;
         int high = n;
